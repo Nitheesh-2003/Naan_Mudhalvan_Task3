@@ -1,23 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import {AppBar,Toolbar} from '@material-ui/core';
+import Notification from './components/Notification';
+import VideoPlayer from './components/VideoPlayer';
+import Options from './components/Options';
+import {makeStyles} from '@material-ui/core/styles';
+
+const useStyle=makeStyles((theme)=>({
+  wrapper : {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '100%',
+  }
+}));
 
 function App() {
+  const classes=useStyle();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AppBar color='secondary' elevation={2} position="static">
+        <Toolbar>
+          <div className='head'>
+            <h2>Connect</h2>
+            <h1>ℤ</h1>
+          </div>
+        </Toolbar>
+      </AppBar>
+      <div className={classes.wrapper}>
+        <VideoPlayer />
+        <Options>
+          <Notification />
+        </Options>
+      </div>
     </div>
   );
 }
